@@ -5,12 +5,18 @@
 #include "MyGLRenderContext.h"
 #include "../util/LogUtil.h"
 #include "../util/ImageDef.h"
+#include <TextureMapSample.h>
+#include <NV21TextureMapSample.h>
+#include <Model3DSample.h>
 
 MyGLRenderContext* MyGLRenderContext::m_pContext = nullptr;
 
 MyGLRenderContext::MyGLRenderContext()
 {
-    m_pCurSample = new TriangleSample();
+//    m_pCurSample = new TriangleSample();
+    m_pCurSample = new TextureMapSample();
+//    m_pCurSample = new NV21TextureMapSample();
+//    m_pCurSample = new Model3DSample();
 }
 
 MyGLRenderContext::~MyGLRenderContext()
@@ -39,6 +45,10 @@ void MyGLRenderContext::SetImageData(int format, int width, int height, uint8_t 
         default:
             break;
     }
+
+    if (m_pCurSample) {
+        m_pCurSample->LoadImage(&nativeImage);
+    }
 }
 
 void MyGLRenderContext::OnSurfaceCreated()
@@ -64,6 +74,15 @@ void MyGLRenderContext::OnDrawFrame()
     {
         m_pCurSample->Init();
         m_pCurSample->Draw(m_ScreenW, m_ScreenH);
+    }
+}
+
+void MyGLRenderContext::UpdateTransformMatrix(float rotateX, float rotateY, float scaleX, float scaleY)
+{
+    LOGCATE("MyGLRenderContext::UpdateTransformMatrix [rotateX, rotateY, scaleX, scaleY] = [%f, %f, %f, %f]", rotateX, rotateY, scaleX, scaleY);
+    if (m_pCurSample)
+    {
+        m_pCurSample->UpdateTransformMatrix(rotateX, rotateY, scaleX, scaleY);
     }
 }
 

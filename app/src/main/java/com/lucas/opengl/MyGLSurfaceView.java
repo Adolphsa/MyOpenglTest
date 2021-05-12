@@ -19,16 +19,20 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
     private MyGLRender mGLRender;
 
-    public MyGLSurfaceView(Context context) {
-        this(context, null);
+    public MyGLSurfaceView(Context context, MyGLRender glRender) {
+        this(context, glRender, null);
     }
 
-    public MyGLSurfaceView(Context context, AttributeSet attrs) {
+    public MyGLSurfaceView(Context context, MyGLRender glRender, AttributeSet attrs)  {
         super(context, attrs);
         this.setEGLContextClientVersion(2);
-        mGLRender = new MyGLRender();
+        mGLRender = glRender;
         setEGLConfigChooser(8, 8, 8, 8, 16, 8);
         setRenderer(mGLRender);
         setRenderMode(RENDERMODE_WHEN_DIRTY);
+    }
+
+    public MyGLRender getGLRender() {
+        return mGLRender;
     }
 }

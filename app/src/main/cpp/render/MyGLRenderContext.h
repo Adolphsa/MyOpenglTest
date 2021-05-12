@@ -23,6 +23,8 @@ public:
 
     void OnDrawFrame();
 
+    void UpdateTransformMatrix(float rotateX, float rotateY, float scaleX, float scaleY);
+
     static MyGLRenderContext* GetInstance();
     static void DestroyInstance();
 
