@@ -52,6 +52,17 @@ native_UpdateTransformMatrix(JNIEnv *env, jobject instance, jfloat rotateX, jflo
 
 /**
  * class:   com_lucas_opengl_MyNativeRender
+ * method:  native_UpdateTransformMatrix2
+ * signature:   (FFFF)V
+ */
+JNIEXPORT void JNICALL
+native_UpdateTransformMatrix2(JNIEnv *env, jobject instance, jfloat offsetX, jfloat offsetY,
+                             jfloat scaleX, jfloat scaleY) {
+    MyGLRenderContext::GetInstance()->UpdateTransformMatrix2(offsetX, offsetY, scaleX, scaleY);
+}
+
+/**
+ * class:   com_lucas_opengl_MyNativeRender
  * method:  native_SetImageData
  * signature:   (III[B)V
  */
@@ -104,6 +115,7 @@ static JNINativeMethod g_RenderMethods[] = {
         {"native_OnInit",                "()V",                  (void *) (native_OnInit)},
         {"native_OnUnInit",              "()V",                  (void *) (native_OnUnInit)},
         {"native_UpdateTransformMatrix", "(FFFF)V",              (void *) (native_UpdateTransformMatrix)},
+        {"native_UpdateTransformMatrix2", "(FFFF)V",              (void *) (native_UpdateTransformMatrix2)},
         {"native_SetImageData",          "(III[B)V",             (void *) (native_SetImageData)},
         {"native_OnSurfaceCreated",      "()V",                  (void *) (native_OnSurfaceCreated)},
         {"native_OnSurfaceChanged",      "(II)V",                (void *) (native_OnSurfaceChanged)},

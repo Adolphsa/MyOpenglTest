@@ -12,12 +12,16 @@ GLuint GLUtils::LoadShader(GLenum shaderType, const char *pSource)
 {
     GLuint shader = 0;
     FUN_BEGIN_TIME("GLUtils::LoadShader")
+        //1.创建着色器对象
         shader = glCreateShader(shaderType);
         if (shader)
         {
+            //2.把着色器源码附加到着色器对象上
             glShaderSource(shader, 1, &pSource, NULL);
+            //3.编译着色器
             glCompileShader(shader);
             GLint compiled = 0;
+            //4.检测着色器是否编译成功
             glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
             if (!compiled)
             {
@@ -28,6 +32,7 @@ GLuint GLUtils::LoadShader(GLenum shaderType, const char *pSource)
                     char* buf = (char*) malloc((size_t)infoLen);
                     if (buf)
                     {
+                        //如果编译错误，获取信息
                         glGetShaderInfoLog(shader, infoLen, NULL, buf);
                         LOGCATE("GLUtils::LoadShader Could not compile shader %d:\n%s\n", shaderType, buf);
                         free(buf);
@@ -50,13 +55,16 @@ GLuint GLUtils::CreateProgram(const char *pVertexShaderSource, const char *pFrag
         fragShaderHandle = LoadShader(GL_FRAGMENT_SHADER, pFragShaderSource);
         if (!fragShaderHandle) return program;
 
+        //1.创建着色器程序对象
         program = glCreateProgram();
         if (program)
         {
+            //2.将已经编译好的着色器附加到着色器程序对象上
             glAttachShader(program, vertexShaderHandle);
             CheckGLError("glAttachShader");
             glAttachShader(program, fragShaderHandle);
             CheckGLError("glAttachShader");
+            //3.链接
             glLinkProgram(program);
             GLint linkStatus = GL_FALSE;
             glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);

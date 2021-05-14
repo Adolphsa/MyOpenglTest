@@ -13,8 +13,8 @@ MyGLRenderContext* MyGLRenderContext::m_pContext = nullptr;
 
 MyGLRenderContext::MyGLRenderContext()
 {
-//    m_pCurSample = new TriangleSample();
-    m_pCurSample = new TextureMapSample();
+    m_pCurSample = new TriangleSample();
+//    m_pCurSample = new TextureMapSample();
 //    m_pCurSample = new NV21TextureMapSample();
 //    m_pCurSample = new Model3DSample();
 }
@@ -83,6 +83,15 @@ void MyGLRenderContext::UpdateTransformMatrix(float rotateX, float rotateY, floa
     if (m_pCurSample)
     {
         m_pCurSample->UpdateTransformMatrix(rotateX, rotateY, scaleX, scaleY);
+    }
+}
+
+void MyGLRenderContext::UpdateTransformMatrix2(float offsetX, float offsetY, float scaleX, float scaleY)
+{
+    LOGCATE("MyGLRenderContext::UpdateTransformMatrix [offsetX, offsetY, scaleX, scaleY] = [%f, %f, %f, %f]", offsetX, offsetY, scaleX, scaleY);
+    if (m_pCurSample)
+    {
+        m_pCurSample->UpdateTransformMatrix2(offsetX, offsetY, scaleX, scaleY);
     }
 }
 

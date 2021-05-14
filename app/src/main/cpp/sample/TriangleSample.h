@@ -19,7 +19,14 @@ public:
 
     virtual void Draw(int screenW, int screenH);
 
+    virtual void UpdateTransformMatrix2(float offsetX, float offsetY, float scaleX, float scaleY);
+
     virtual void Destroy();
+
+private:
+    float mOffsetX;
+    float mOffsetY;
+    float mCurrentScale;
 };
 
 

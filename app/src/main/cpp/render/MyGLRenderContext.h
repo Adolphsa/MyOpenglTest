@@ -25,6 +25,8 @@ public:
 
     void UpdateTransformMatrix(float rotateX, float rotateY, float scaleX, float scaleY);
 
+    void UpdateTransformMatrix2(float offsetX, float offsetY, float scaleX, float scaleY);
+
     static MyGLRenderContext* GetInstance();
     static void DestroyInstance();
 

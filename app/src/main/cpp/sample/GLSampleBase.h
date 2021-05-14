@@ -47,6 +47,9 @@ public:
     virtual void UpdateTransformMatrix(float rotateX, float rotateY, float scaleX, float scaleY)
     {}
 
+    virtual void UpdateTransformMatrix2(float offsetX, float offsetY, float scaleX, float scaleY)
+    {}
+
     virtual void SetTouchLocation(float x, float y)
     {}
 

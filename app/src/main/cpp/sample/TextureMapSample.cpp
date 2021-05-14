@@ -54,7 +54,7 @@ void TextureMapSample::Init() {
             "uniform sampler2D s_TextureMap;                     \n"
             "void main()                                         \n"
             "{                                                   \n"
-            "  outColor = texture(s_TextureMap, v_texCoord);     \n"
+            "  outColor = texture(s_TextureMap, vec2(v_texCoord.x, v_texCoord.y));     \n"
             "  //outColor = texelFetch(s_TextureMap,  ivec2(int(v_texCoord.x * 404.0), int(v_texCoord.y * 336.0)), 0);\n"
             "}                                                   \n";
 

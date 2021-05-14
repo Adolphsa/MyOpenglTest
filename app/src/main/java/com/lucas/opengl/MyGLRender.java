@@ -44,4 +44,11 @@ public class MyGLRender implements GLSurfaceView.Renderer {
     public void setImageData(int format, int width, int height, byte[] bytes) {
         myNativeRender.native_SetImageData(format, width, height, bytes);
     }
+
+    public void updateTransformMatrix2(float offsetX, float offsetY, float scaleX, float scaleY)
+    {
+        myNativeRender.native_UpdateTransformMatrix2(offsetX, offsetY, scaleX, scaleY);
+    }
+
+
 }

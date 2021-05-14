@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements ViewTreeObserver.
 //        if (!hasPermissionsGranted(REQUEST_PERMISSIONS)) {
 //            ActivityCompat.requestPermissions(this, REQUEST_PERMISSIONS, PERMISSION_REQUEST_CODE);
 //        }
-        loadRGBAImage(R.drawable.dzzz);
+        loadRGBAImage(R.drawable.dzzz2);
 //        loadNV21Image();
 
 //        CommonUtils.copyAssetsDirToSDCard(MainActivity.this, "poly", "/sdcard/model");
